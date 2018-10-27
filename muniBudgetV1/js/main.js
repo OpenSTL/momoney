@@ -38,7 +38,7 @@ d3.csv(tempUrl).then(function(rows){
             })
             .attr("cy", 25)
             .attr("r", function(d){
-                return d.BUDGETYEAR * 2;
+                return d["TOTAL REVENUE"];
             })
 
 }).catch(function(error){
