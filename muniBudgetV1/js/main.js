@@ -8,12 +8,12 @@
 var tempUrl = "https://raw.githubusercontent.com/OpenDataSTL/municipalityBudgetsSTL/clean_numbers/muniBudgetV1/data/budget.csv"
 
 d3.csv(tempUrl).then(function(rows){
-    rows.forEach(function(d){
-        d.POPULATION = +d.POPULATION
-        d.BUDGETYEAR = +d.BUDGETYEAR
-        d.TOTALREVENUE = +d.TOTALREVENUE
-        d.TOTALEXPENDITURES = +d.TOTALEXPENDITURES
-        d.POLICE = +d.POLICE;
+    rows.forEach(function(row){
+        row["POPULATION"] = parseInt(row["POPULATION"]);
+        row["TOTAL REVENUE"] = parseInt(row["TOTAL REVENUE"]);
+        row["TOTAL EXPENDITURES"] = parseInt(row["TOTAL EXPENDITURES"]);
+        row["POLICE"] = parseInt(row["POLICE"]);
+        row["BUDGET YEAR"] = parseInt(row["BUDGET YEAR"]);
     });
 
     var svg = d3.select("#chart-area").append("svg")
