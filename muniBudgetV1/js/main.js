@@ -7,8 +7,8 @@
 // CSV needs to be http/https (not file://) to load
 var tempUrl = "https://raw.githubusercontent.com/OpenDataSTL/municipalityBudgetsSTL/clean_numbers/muniBudgetV1/data/budget.csv"
 
-d3.csv(tempUrl).then(function(data){
-    data.forEach(function(d){
+d3.csv(tempUrl).then(function(rows){
+    rows.forEach(function(d){
         d.POPULATION = +d.POPULATION
         d.BUDGETYEAR = +d.BUDGETYEAR
         d.TOTALREVENUE = +d.TOTALREVENUE
@@ -21,7 +21,7 @@ d3.csv(tempUrl).then(function(data){
         .attr("height", 1400);
 
     var circles = svg.selectAll("circle")
-        .data(data);
+        .data(rows);
 
     circles.enter()
         .append("circle")
