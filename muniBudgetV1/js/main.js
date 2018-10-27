@@ -23,6 +23,12 @@ d3.csv(tempUrl).then(function(rows){
         return true;
     });
 
+    var totalRevenueSum = 0;
+    filtered_rows.forEach(function(row){
+      totalRevenueSum += row["TOTAL REVENUE"];
+    });
+    var totalRevenueAverage = totalRevenueSum / filtered_rows.length;
+
     var svg = d3.select("#chart-area").append("svg")
         .attr("width", 1400)
         .attr("height", 1400);
@@ -38,7 +44,7 @@ d3.csv(tempUrl).then(function(rows){
             })
             .attr("cy", 25)
             .attr("r", function(d){
-                return d["TOTAL REVENUE"];
+                return d["TOTAL REVENUE"]/totalRevenueAverage * 25;
             })
 
 }).catch(function(error){
