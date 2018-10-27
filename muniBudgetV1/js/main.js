@@ -16,12 +16,19 @@ d3.csv(tempUrl).then(function(rows){
         row["BUDGET YEAR"] = parseInt(row["BUDGET YEAR"]);
     });
 
+    var filtered_rows = rows.filter(function(row){
+        if (isNaN(row["BUDGET YEAR"])){ return false; }
+        if (isNaN(row["TOTAL REVENUE"])){ return false; }
+        if (isNaN(row["TOTAL EXPENDITURES"])){ return false; }
+        return true;
+    });
+
     var svg = d3.select("#chart-area").append("svg")
         .attr("width", 1400)
         .attr("height", 1400);
 
     var circles = svg.selectAll("circle")
-        .data(rows);
+        .data(filtered_rows);
 
     circles.enter()
         .append("circle")
