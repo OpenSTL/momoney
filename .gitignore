@@ -8,3 +8,5 @@
 
 # Pelican Generated Content
 output/
+/pelican.pid
+/srv.pid
