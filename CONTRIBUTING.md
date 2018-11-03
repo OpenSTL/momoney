@@ -27,6 +27,8 @@ Requires automake and bash to be installed on your system in addition to
 3.  Execute `make devserver` to generate the pelican site in the `output`
     directory and start serving it on
     [http://localhost:8000](http://localhost:8000).
+4.  Modify files and they will be immediately updated in the served version.
+5.  When complete, run `make stopserver` to stop the running server.
 
 ### Windows
 
