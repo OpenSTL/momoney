@@ -1,7 +1,7 @@
 set OUTPUTDIR=output
 set PELICANCONF=pelicanconf.py
 
-call make_env.bat
+call make_venv.bat
 call .venv/Scripts/activate.bat
 
 pip install -r requirements.txt
