@@ -12,6 +12,7 @@ TIMEZONE = 'America/Chicago'
 
 DEFAULT_LANG = 'en'
 
+STATIC_PATHS = ['js', 'data']
 THEME = 'theme/notmyidea'
 
 # Feed generation is usually not desired when developing
