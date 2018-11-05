@@ -24,11 +24,13 @@ Requires automake and bash to be installed on your system in addition to
 2.  Execute `source .venv\bin\activate` to enter the virtual environment in your
     terminal. This only applies to this terminal, you must run this for each
     terminal you wish to use pelican from.
-3.  Execute `make devserver` to generate the pelican site in the `output`
+3.  Execute `pip install -r requirements.txt` to install pelican and its
+    pre-requisites.
+4.  Execute `make devserver` to generate the pelican site in the `output`
     directory and start serving it on
     [http://localhost:8000](http://localhost:8000).
-4.  Modify files and they will be immediately updated in the served version.
-5.  When complete, run `make stopserver` to stop the running server.
+5.  Modify files and they will be immediately updated in the served version.
+6.  When complete, run `make stopserver` to stop the running server.
 
 ### Windows
 
