@@ -20,8 +20,8 @@ machine. This requires python 3 to be installed on your computer.
 Requires automake and bash to be installed on your system in addition to
 `python3` being in your path.
 
-1.  Run `make_venv.bash` to create a python virtual environment.
-2.  Execute `source .venv\bin\activate` to enter the virtual environment in your
+1.  From the repo run `./make_venv.bash` to create a python virtual environment.
+2.  Execute `source .venv/bin/activate` to enter the virtual environment in your
     terminal. This only applies to this terminal, you must run this for each
     terminal you wish to use pelican from.
 3.  Execute `pip install -r requirements.txt` to install pelican and its
@@ -49,4 +49,4 @@ Requires Python 3 to be installed on your computer, and accessible as the first
     5.  Start serving the site on [http://localhost:8000](http://localhost:8000)
 2.  Make changes to source files, javascript, data, etc.
 3.  Press Ctrl+C in the terminal serving the Site
-4.  Re run `run-window.bat` to generate and start serving again.
+4.  Re run `run_windows.bat` to generate and start serving again.
