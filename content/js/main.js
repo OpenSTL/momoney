@@ -5,7 +5,7 @@
 */
 
 // CSV needs to be http/https (not file://) to load
-var tempUrl = "../data/budget.csv"
+var tempUrl = "https://raw.githubusercontent.com/OpenDataSTL/municipalityBudgetsSTL/master/data/budget.csv"
 
 d3.csv(tempUrl).then(function(rows){
     rows.forEach(function(row){
