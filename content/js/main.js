@@ -4,10 +4,7 @@
 *    2.7 - Loading external data
 */
 
-// CSV needs to be http/https (not file://) to load
-var tempUrl = "https://raw.githubusercontent.com/OpenDataSTL/municipalityBudgetsSTL/master/data/budget.csv"
-
-d3.csv(tempUrl).then(function(rows){
+d3.csv("../data/budget.csv").then(function(rows){
     rows.forEach(function(row){
         row["POPULATION"] = parseInt(row["POPULATION"]);
         row["TOTAL REVENUE"] = parseInt(row["TOTAL REVENUE"]);
