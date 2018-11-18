@@ -21,6 +21,7 @@ Requires automake and bash to be installed on your system in addition to
 `python3` being in your path.
 
 1.  From the repo run `./make_venv.bash` to create a python virtual environment.
+    (Or just run `python3 -m venv .venv`.)
 2.  Execute `source .venv/bin/activate` to enter the virtual environment in your
     terminal. This only applies to this terminal, you must run this for each
     terminal you wish to use pelican from.
@@ -32,7 +33,7 @@ Requires automake and bash to be installed on your system in addition to
 5.  Modify files and they will be immediately updated in the served version.
 6.  When complete, run `make stopserver` to stop the running server.
 
-### Windows
+### Windows - Lowest Barrier to Entry
 
 > This all works better on POSIX systems, if you would like to have that on
 > windows, you can install [Cygwin](https://www.cygwin.com/) to get this all
@@ -50,3 +51,24 @@ Requires Python 3 to be installed on your computer, and accessible as the first
 2.  Make changes to source files, javascript, data, etc.
 3.  Press Ctrl+C in the terminal serving the Site
 4.  Re run `run_windows.bat` to generate and start serving again.
+
+### Windows (Git Bash) - A Bit better
+
+Requires Python 3 to be installed on your computer, and accessible as the first
+`python` command found in your `PATH`.
+
+Requires Git to be installed on your computer, and the following to be run from
+the "Git Bash" command prompt.
+
+1.  From the root of the repo run the `run_windows.bash` command prompt. This
+    will do the following:
+    1.  If it doesn't already exist, create a python virtual environment in the
+        `.venv` directory.
+    2.  Activate the virtual environment for the script
+    3.  Install the required components of pelican in your virtual environment
+    4.  Start serving the site on
+        [http://localhost:8000](http://localhost:8000). This will automatically
+        regenerate content as it is editing. (Test it by adding
+        [markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+        text to the `pages\about.md` file.)
+2.  Run `stop_windows.bash` to stop the server.        
