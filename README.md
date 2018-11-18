@@ -3,4 +3,4 @@ Provides public awareness of how your municipality's budget spending compares to
 
 We're still trying to figure out what that will look like, to join the conversation, head over to [OpenSTL's Slack](https://opendatastl.slack.com), #munibudgetanalysis channel.
 
-To get started coding, see [Contributing.md](Contributing.md).
+To get started coding, see [CONTRIBUTING.md](CONTRIBUTING.md).
