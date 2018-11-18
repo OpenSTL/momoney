@@ -1,6 +1,6 @@
 
 # Make the virtual environment if it doesn't exist
-if [ ! -d ".venv" ] then;
+if [ ! -d ".venv" ]; then
   python -m venv .venv
 fi
 
