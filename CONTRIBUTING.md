@@ -9,6 +9,17 @@ is imported from an Excel file into CSV, then displayed using the Javascript
 The pelican site content is in the `content` directory. The data is in the
 `data` directory. The javascript for displaying data is in the `js` directory.
 
+Pelican can use [Markdown](https://en.wikipedia.org/wiki/Markdown),
+[reStructuredText](http://docutils.sourceforge.net/rst.html) or Plain HTML to
+make pages. For simple pages, markdown is preferred. You can find a simple
+[cheat-sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet),
+[guide](https://www.markdownguide.org/),
+[the creators page](https://daringfireball.net/projects/markdown/), and
+[the offical spec](https://commonmark.org/) helpful. Markdown files should use
+the `.md` extension. The primary goal of markdown is to have a text file that
+is well laid-out to edit and read in plain text format, and the rules of layout
+can also be leveraged to generate HTML (or PDF, Word Doc, etc) from it.
+
 Rendering the Site with Pelican
 -------------------------------
 
