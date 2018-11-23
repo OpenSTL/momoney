@@ -10,3 +10,6 @@
 output/
 /pelican.pid
 /srv.pid
+
+# Project Files
+.vscode/
