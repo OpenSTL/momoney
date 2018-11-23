@@ -10,7 +10,7 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-SITEURL = 'https://opendatastl.github.io/municipalityBudgetsSTL/'
+SITEURL = 'https://opendatastl.github.io/Municpal-Budget-Dashboard/'
 RELATIVE_URLS = False
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
