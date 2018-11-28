@@ -55,7 +55,6 @@ d3.csv("../data/budget.csv").then(function(rows){
             .attr("r", function(d){
                 return d["TOTAL REVENUE"]/totalRevenueAverage * 25;
             })
-            .text(d["MUNICIPALITY"])
 
 }).catch(function(error){
     console.log(error);
