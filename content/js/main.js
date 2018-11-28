@@ -4,8 +4,29 @@
 *    2.7 - Loading external data
 */
 
+function filterOutInvalidRows(rows)
+{
+    var filtered_rows = rows.filter(function(row){
+        if (isNaN(row["BUDGET YEAR"])){ return false; }
+        if (isNaN(row["TOTAL REVENUE"])){ return false; }
+        if (isNaN(row["TOTAL EXPENDITURES"])){ return false; }
+        return true;
+    });
+    return filtered_rows;
+}
+
+function averageRevenue(rows){
+    var totalRevenueSum = 0;
+    rows.forEach(function(row){
+      totalRevenueSum += row["TOTAL REVENUE"];
+    });
+    var totalRevenueAverage = totalRevenueSum / rows.length;
+    return totalRevenueAverage;
+}
+
 d3.csv("../data/budget.csv").then(function(rows){
     rows.forEach(function(row){
+        // Convert strings to integers
         row["POPULATION"] = parseInt(row["POPULATION"]);
         row["TOTAL REVENUE"] = parseInt(row["TOTAL REVENUE"]);
         row["TOTAL EXPENDITURES"] = parseInt(row["TOTAL EXPENDITURES"]);
@@ -13,18 +34,9 @@ d3.csv("../data/budget.csv").then(function(rows){
         row["BUDGET YEAR"] = parseInt(row["BUDGET YEAR"]);
     });
 
-    var filtered_rows = rows.filter(function(row){
-        if (isNaN(row["BUDGET YEAR"])){ return false; }
-        if (isNaN(row["TOTAL REVENUE"])){ return false; }
-        if (isNaN(row["TOTAL EXPENDITURES"])){ return false; }
-        return true;
-    });
+    var filtered_rows = filterOutInvalidRows(rows);
 
-    var totalRevenueSum = 0;
-    filtered_rows.forEach(function(row){
-      totalRevenueSum += row["TOTAL REVENUE"];
-    });
-    var totalRevenueAverage = totalRevenueSum / filtered_rows.length;
+    var totalRevenueAverage = averageRevenue(filtered_rows);
 
     var svg = d3.select("#chart-area").append("svg")
         .attr("width", 1400)
@@ -43,6 +55,7 @@ d3.csv("../data/budget.csv").then(function(rows){
             .attr("r", function(d){
                 return d["TOTAL REVENUE"]/totalRevenueAverage * 25;
             })
+            .text(d["MUNICIPALITY"])
 
 }).catch(function(error){
     console.log(error);
