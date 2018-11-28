@@ -59,7 +59,6 @@ d3.csv("../data/budget.csv").then(function(rows){
               return ((i * 50) + 25);
           })
           .text( function (d) {
-                     console.log(d.MUNICIPALITY)
                      return d.MUNICIPALITY;
                    })
                    .attr("font-family", "sans-serif")
