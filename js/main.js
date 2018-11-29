@@ -37,12 +37,34 @@ d3.csv("../data/budget.csv").then(function(rows){
         .append("circle")
             .attr("cx", function(d, i){
                 console.log(d);
-                return (i * 50) + 25;
+                return ((i * 50) + 25);
             })
-            .attr("cy", 25)
+            .attr("cy", function(d, i){
+                return ((i * 50) + 25);
+            })
             .attr("r", function(d){
                 return d["TOTAL REVENUE"]/totalRevenueAverage * 25;
             })
+            .attr("stroke","black")
+	          .attr("fill", "white")
+
+    var text = svg.selectAll('text')
+        .data(filtered_rows)
+        .enter()
+        .append('text')
+          .attr("x", function(d, i){
+              return (i * 50) + 25;
+          })
+          .attr("y", function(d, i){
+              return ((i * 50) + 25);
+          })
+          .text( function (d) {
+                     return d.MUNICIPALITY;
+                   })
+                   .attr("font-family", "sans-serif")
+                   .attr("font-size", "10px")
+                   .attr("fill", "red")
+                   .attr("text-anchor", "middle")
 
 }).catch(function(error){
     console.log(error);
