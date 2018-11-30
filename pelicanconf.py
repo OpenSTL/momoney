@@ -18,7 +18,7 @@ STATIC_PATHS = ['js', 'data']
 #THEME = 'theme/notmyidea'
 
 THEME = 'theme/pelican-bootstrap3'
-PLUGINS_PATH = [os.path.dirname(os.path.realpath(__file__)) + '/plugins', ]
+PLUGIN_PATHS = ['plugins', ]
 PLUGINS = ['i18n_subsites', ]
 JINJA_ENVIRONMENT = {
     'extensions': ['jinja2.ext.i18n'],
