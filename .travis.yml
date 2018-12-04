@@ -5,4 +5,4 @@ install:
   - pip install -r requirements.txt
   - pip install ghp-import
 script:
-  - make html  
+  - make html  # Creates in ./output
