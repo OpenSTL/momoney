@@ -7,3 +7,15 @@ install:
   - pip install ghp-import
 script:
   - make html  # Creates in ./output
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  on:
+    branch: master
+  target-branch: gh-pages
+  local-dir: output
+  name: travis-ci
+  email: travis-ci@none.com
+  
