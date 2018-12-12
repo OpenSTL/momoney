@@ -5,4 +5,6 @@ We're still trying to figure out what that will look like, to join the conversat
 
 To get started coding, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
+## Travis Build
+
 [![Build Status](https://travis-ci.org/OpenDataSTL/momoney.svg?branch=master)](https://travis-ci.org/OpenDataSTL/momoney)
