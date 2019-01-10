@@ -24,7 +24,7 @@ function averageRevenue(rows){
     return totalRevenueAverage;
 }
 
-d3.csv("../data/budget.csv").then(function(rows){
+d3.csv("../data/full.csv").then(function(rows){
     rows.forEach(function(row){
         // Convert strings to integers
         row["POPULATION"] = parseInt(row["POPULATION"]);
