@@ -1,2 +1,7 @@
+# Static Site
 pelican
 markdown
+
+# Data processing
+pandas
+xlrd
