@@ -35,6 +35,9 @@ function averageRevenue(rows){
     return totalRevenueAverage;
 }
 
+var barWidth = 25;
+var barSpacing = 25;
+
 d3.csv("../data/full.csv").then(function(rows){
     rows.forEach(function(row){
         // Convert strings to integers
@@ -49,13 +52,16 @@ d3.csv("../data/full.csv").then(function(rows){
 
     var totalRevenueAverage = averageRevenue(filtered_rows);
 
+    var areaHeight = rows.length * (barWidth + barSpacing);
+    var areaWidth = 1400;
+
     var svg = d3.select("#chart-area").append("svg")
-        .attr("width", 1400)
-        .attr("height", 1400);
+        .attr("width", areaWidth)
+        .attr("height", areaHeight);
     
     var y = d3.scaleLinear()
     .domain([0,largest(rows,"POPULATION")]) // largest population
-    .range([0,400]);
+    .range([0,areaWidth]);
 
     var rect = svg.selectAll("rect")
         .data(rows);
@@ -63,12 +69,12 @@ d3.csv("../data/full.csv").then(function(rows){
         .append("rect")
             .attr("x", 10)
             .attr("y",function(d,i){
-                return (i * 50) + 30;
+                return (i * (barWidth + barSpacing)) + 30;
             })
             .attr("width",function(d){
                 return y(d.POPULATION);
             })
-            .attr("height",25)
+            .attr("height",barWidth)
             .attr("fill","grey");
     
     /*var circles = svg.selectAll("circle")
