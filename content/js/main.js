@@ -4,6 +4,17 @@
 *    2.7 - Loading external data
 */
 
+function largest(rows, field){
+    var highest = 0;
+    rows.forEach(function(row){
+        if (row[field] > highest){
+                highest = row[field];
+        }
+    });
+    return highest;
+};
+
+
 function filterOutInvalidRows(rows)
 {
     var filtered_rows = rows.filter(function(row){
@@ -41,8 +52,26 @@ d3.csv("../data/full.csv").then(function(rows){
     var svg = d3.select("#chart-area").append("svg")
         .attr("width", 1400)
         .attr("height", 1400);
+    
+    var y = d3.scaleLinear()
+    .domain([0,largest(rows,"POPULATION")]) // largest population
+    .range([0,400]);
 
-    var circles = svg.selectAll("circle")
+    var rect = svg.selectAll("rect")
+        .data(rows);
+    rect.enter()
+        .append("rect")
+            .attr("x", 10)
+            .attr("y",function(d,i){
+                return (i * 50) + 30;
+            })
+            .attr("width",function(d){
+                return y(d.POPULATION);
+            })
+            .attr("height",25)
+            .attr("fill","grey");
+    
+    /*var circles = svg.selectAll("circle")
         .data(filtered_rows);
 
     circles.enter()
@@ -76,7 +105,7 @@ d3.csv("../data/full.csv").then(function(rows){
                    .attr("font-family", "sans-serif")
                    .attr("font-size", "10px")
                    .attr("fill", "red")
-                   .attr("text-anchor", "middle")
+                   .attr("text-anchor", "middle")*/
 
 }).catch(function(error){
     console.log(error);
