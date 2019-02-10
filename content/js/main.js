@@ -79,8 +79,11 @@ d3.csv("../data/full.csv").then(function(rows){
             .text(function(d){
                 return d.MUNICIPALITY;
             })
-            .attr("font-size",20)
-            .attr("fill","orange");
+            .attr("font-size",21)
+            .attr("fill","orange")
+            .attr("class","text");
+    
+    console.log("this works");
     
     // brings in population data and displays it as horizontal bars
     var rect = svg.selectAll("rect")
@@ -89,7 +92,7 @@ d3.csv("../data/full.csv").then(function(rows){
         .append("rect")
             .attr("x", 10)
             .attr("y",function(d,i){
-                return (i * (barWidth + barSpacing)) + 30;
+                return (i * (barWidth + barSpacing)) + 35;
             })
             .attr("width",function(d){
                 return y(d.POPULATION);
