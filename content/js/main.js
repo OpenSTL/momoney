@@ -77,28 +77,39 @@ d3.csv("../data/full.csv").then(function(rows){
                 return (i * (barWidth + barSpacing)) + 30;
             })
             .text(function(d){
+                console.log(d.MUNICIPALITY.length);
                 return d.MUNICIPALITY;
             })
             .attr("font-size",21)
-            .attr("fill","orange")
-            .attr("class","text");
+            .attr("fill","black");
     
-    console.log("this works");
+    
     
     // brings in population data and displays it as horizontal bars
     var rect = svg.selectAll("rect")
         .data(rows);
     rect.enter()
         .append("rect")
-            .attr("x", 10)
+            .attr("class","bar")
+            .attr("x", function(d,i){
+                return (d.MUNICIPALITY.length * 15);
+            })
             .attr("y",function(d,i){
-                return (i * (barWidth + barSpacing)) + 35;
+                return (i * (barWidth + barSpacing)) + 10;
             })
             .attr("width",function(d){
-                return y(d.POPULATION);
+                return y((d.TOTALREVENUE/100));
             })
             .attr("height",barWidth)
-            .attr("fill","grey");
+            .attr("fill","steelblue");
+    
+    //.bar {
+  //fill: steelblue;
+//}
+
+//.bar:hover {
+  //fill: brown;
+//}
 
 }).catch(function(error){
     console.log(error);
