@@ -13,7 +13,8 @@ TIMEZONE = 'America/Chicago'
 
 DEFAULT_LANG = 'en'
 
-STATIC_PATHS = ['js', 'data']
+STATIC_PATHS = ['js', 'data', 'css', 'img']
+EXTRA_PATH_METADATA = {'img/favicon.ico': {'path': 'favicon.ico'}}
 
 #THEME = 'theme/notmyidea'
 
