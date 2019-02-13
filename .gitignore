@@ -13,3 +13,9 @@ output/
 
 # Project Files
 .vscode/
+
+# Automatically Generated Data
+/content/data/full.*
+
+# Libre Office Lock files
+/data/.~lock.*

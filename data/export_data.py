@@ -1,10 +1,12 @@
 import pandas as pd
 import os
+import sys
 import json
 
 workbook_filename = "import_data.xlsx"
-out_json = "../content/data/full.json"
-out_csv = "../content/data/full.csv"
+out_dir = "../content/data"
+out_json = "full.json"
+out_csv = "full.csv"
 
 def pull_data(workbook_filename):
     data = pd.read_excel(
@@ -44,14 +46,17 @@ def write_json(data, file):
             json.dump(data, f, indent=2)
 
 if __name__ == "__main__":
+    out_dir = out_dir
+    if len(sys.argv) > 1:
+        out_dir = sys.argv[1]
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
     data = pull_data(workbook_filename)
 
     combined_data = combine(data)
     filtered_data = filter(combined_data)
-    filtered_data.to_csv(out_csv)
+    filtered_data.to_csv(out_dir + "/" +out_csv)
     #write_json(filtered_data, out_json)
     dict_data = make_dict(filtered_data)
-    write_json(dict_data, out_json)
+    write_json(dict_data, out_dir + "/" + out_json)
 
     print("Data processing complete")
