@@ -77,8 +77,8 @@ d3.csv("../data/full.csv").then(function(rows){
                 return (i * (barWidth + barSpacing)) + 30;
             })
             .text(function(d){
-                console.log(d.MUNICIPALITY.length);
-                return d.MUNICIPALITY;
+                console.log(d['MUNICIPALITY'].length);
+                return d['MUNICIPALITY'];
             })
             .attr("font-size",21)
             .attr("fill","black");
@@ -92,13 +92,13 @@ d3.csv("../data/full.csv").then(function(rows){
         .append("rect")
             .attr("class","bar")
             .attr("x", function(d,i){
-                return (d.MUNICIPALITY.length * 15);
+                return (d['MUNICIPALITY'].length * 15);
             })
             .attr("y",function(d,i){
                 return (i * (barWidth + barSpacing)) + 10;
             })
             .attr("width",function(d){
-                return y((d.TOTALREVENUE/100));
+                return y((d['TOTAL REVENUE']/200));
             })
             .attr("height",barWidth)
             .attr("fill","steelblue");
