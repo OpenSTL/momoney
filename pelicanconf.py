@@ -14,10 +14,10 @@ TIMEZONE = 'America/Chicago'
 DEFAULT_LANG = 'en'
 
 STATIC_PATHS = ['js', 'data', 'css', 'img']
-EXTRA_PATH_METADATA = {'img/favicon.ico': {'path': 'favicon.ico'}}
+
+FAVICON = 'img/favicon.ico'
 
 #THEME = 'theme/notmyidea'
-
 THEME = 'theme/pelican-bootstrap3'
 PLUGIN_PATHS = ['plugins', ]
 PLUGINS = ['i18n_subsites', ]
