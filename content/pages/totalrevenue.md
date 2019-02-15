@@ -14,7 +14,9 @@ Overview of revenue brought in by municipalities
 <!-- External JS libraries -->
 <script src="../js/d3.min.js"></script>
 <!-- Custom JS -->
+<script src="../js/filters.js"></script>
 <script type="text/javascript">
+
 function largest(rows, field){
     var highest = 0;
     rows.forEach(function(row){
@@ -24,17 +26,6 @@ function largest(rows, field){
     });
     return highest;
 };
-
-
-function filterOutInvalidRows(rows) {
-    var filtered_rows = rows.filter(function(row){
-        if (isNaN(row["BUDGET YEAR"])){ return false; }
-        if (isNaN(row["TOTAL REVENUE"])){ return false; }
-        if (isNaN(row["TOTAL EXPENDITURES"])){ return false; }
-        return true;
-    });
-    return filtered_rows;
-}
 
 function averageRevenue(rows){
     var totalRevenueSum = 0;
@@ -60,7 +51,7 @@ d3.csv("../data/full.csv").then(function(rows){
         row["BUDGET YEAR"] = parseInt(row["BUDGET YEAR"]);
     });
 
-    var filtered_rows = filterOutInvalidRows(rows);
+    var filtered_rows = filters.invalidRows(rows, ["BUDGET YEAR", "TOTAL REVENUE", "TOTAL EXPENDITURES"]);
 
     var totalRevenueAverage = averageRevenue(filtered_rows);
 
