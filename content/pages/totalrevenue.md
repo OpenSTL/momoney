@@ -1,4 +1,4 @@
-Title: Total Revenue 2
+Title: Total Revenue
 
 Overview of revenue brought in by municipalities
 
