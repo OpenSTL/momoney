@@ -13,13 +13,13 @@
 <link rel="canonical" href="https://opendatastl.github.io/momoney/pages/total-revenue.html">
 
         <meta name="author" content="OpenDataSTL" />
-        <meta name="description" content="Overview of the revenue brought in by municipalities Attempt inline html next End of the inline html" />
+        <meta name="description" content="Overview of revenue brought in by municipalities var barWidth = 25; var barSpacing = 20; // Pull in D3 CSV data d3.csv(&#34;../data/full.csv&#34;).then(function(rows){ rows.forEach(function(row){ // Convert strings to integers row[&#34;TOTAL REVENUE&#34;] = parseInt(row[&#34;TOTAL REVENUE&#34;]); }); var filtered_rows = filters.invalidRows(rows, [&#34;TOTAL REVENUE&#34;]); var areaHeight …" />
 
     <meta property="og:site_name" content="Municipality Budgets STL" />
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Total Revenue"/>
     <meta property="og:url" content="https://opendatastl.github.io/momoney/pages/total-revenue.html"/>
-    <meta property="og:description" content="Overview of the revenue brought in by municipalities Attempt inline html next End of the inline html" />
+    <meta property="og:description" content="Overview of revenue brought in by municipalities var barWidth = 25; var barSpacing = 20; // Pull in D3 CSV data d3.csv(&#34;../data/full.csv&#34;).then(function(rows){ rows.forEach(function(row){ // Convert strings to integers row[&#34;TOTAL REVENUE&#34;] = parseInt(row[&#34;TOTAL REVENUE&#34;]); }); var filtered_rows = filters.invalidRows(rows, [&#34;TOTAL REVENUE&#34;]); var areaHeight …" />
 
 
 
@@ -78,33 +78,54 @@ Municipality Budgets STL            </a>
         <h1 class="entry-title">Total Revenue</h1>
         
         <div class="entry-content">
-            
-  <p>
-    Overview of the revenue brought in by municipalities
-  </p>
+            <p>Overview of revenue brought in by municipalities</p>
+<!-- Bootstrap grid setup -->
 
-  <p>
-    Attempt inline html next
-  </p>
+<div class="container">
+  <div class="row">
+    <div id="chart-area"></div>
+  </div>
+<div>
+
+<link rel="stylesheet" href="../css/momoney.css" />
+
+<!-- External JS libraries -->
+<script src="../js/d3.min.js"></script>
+<!-- Custom JS -->
+<script src="../js/filters.js"></script>
+<script src="../js/graph.js"></script>
+<script type="text/javascript">
+
+var barWidth = 25;
+var barSpacing = 20;
 
 
-  <!-- Bootstrap grid setup -->
-  <div class="container">
-    <div class="row">
-      <div id="chart-area"></div>
-    </div>
-  <div>
-    
-  <link rel="stylesheet" href="../css/momoney.css" />
+// Pull in D3 CSV data
+d3.csv("../data/full.csv").then(function(rows){
+    rows.forEach(function(row){
+        // Convert strings to integers
+        row["TOTAL REVENUE"] = parseInt(row["TOTAL REVENUE"]);
+    });                                        
 
-  <!-- External JS libraries -->
-  <script src="../js/d3.min.js"></script>
-  <!-- Custom JS -->
-  <script src="../js/main.js"></script>
-  
+    var filtered_rows = filters.invalidRows(rows, ["TOTAL REVENUE"]);
 
-  <p>End of the inline html</p>
+    var areaHeight = filtered_rows.length * (barWidth + barSpacing);
+    var areaWidth = 500;
 
+
+    var municipalities = []
+    var revenue = []
+
+    filtered_rows.forEach(function(row){
+        municipalities.push(row["MUNICIPALITY"]);
+        revenue.push(row["TOTAL REVENUE"]);
+    });
+
+    graph.basic_bars(municipalities, revenue, barWidth, barSpacing, areaHeight, areaWidth);
+}).catch(function(error){
+    console.log(error);
+})
+</script>
         </div>
     </section>
         </div>
