@@ -20,7 +20,7 @@ graph = {
             .domain([0,largestValue])
             .range([0,areaWidth-labelSpace]);
 
-        // set SVG height an width
+        // set SVG height and width
         var svg = d3.select("#chart-area").append("svg")
         .attr("width", areaWidth)
         .attr("height", areaHeight);
