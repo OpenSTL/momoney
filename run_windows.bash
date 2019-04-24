@@ -14,4 +14,9 @@ pip install -r requirements.txt
 export PY=python
 export PORT=8000
 
+mkdir -p content/data 
+pushd data
+python export_data.py
+popd
+
 ./develop_server.sh restart $PORT
