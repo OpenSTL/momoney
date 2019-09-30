@@ -1,4 +1,3 @@
-
 graph = {
     maxLength: function maxLength(labels){
         max = 0;
@@ -52,6 +51,36 @@ graph = {
                     return y((d));
                 })
                 .attr("height",barWidth)
-                .attr("fill","steelblue");
+                .attr("fill","steelblue")
+           // set mouse event to show the amount
+           .on("mouseover", function(d, i) {
+                var text = new Intl.NumberFormat('en-US', {
+                   style: 'currency',
+                   currency: 'USD',
+                   }).format(d);
+                // Place white text on the left part of the
+                // bar if the bar is longer than the text.
+                // Otherwise, place brown text to the right
+                // of the bar.
+                var text_end = text.length * 27
+                var bar_end = labelSpace + y(d);
+                var x_position = labelSpace + 5;
+                var fill = "white";
+                if (text_end > bar_end) {
+                  x_position = bar_end + 5;
+                  fill = "brown";
+                }
+                svg.append("text")
+                  .attr("x", x_position)
+                  .attr("y",(i * (barWidth + barSpacing)) + 28)
+                  .attr("fill",fill)
+                  .attr("id","t"+i) //this makes deletion easy later
+                  .attr("pointer-events","none")
+                  .text(text);
+           })
+           // set mouse event to hide the amount
+           .on("mouseout", function(d, i) {
+                d3.select("#t" + i).remove();
+           });
     }
 };
